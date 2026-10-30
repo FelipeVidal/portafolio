@@ -113,6 +113,7 @@
       const name = document.getElementById("name");
       const email = document.getElementById("email");
       const message = document.getElementById("message");
+      const submitButton = form.querySelector('button[type="submit"]');
       let valid = true;
 
       [name, email, message].forEach(function (field) {
@@ -140,10 +141,36 @@
         return;
       }
 
-      feedback.className = "form-feedback success";
-      feedback.textContent = "¡Mensaje enviado con éxito! Gracias por contactarme.";
+      submitButton.disabled = true;
+      feedback.className = "form-feedback";
+      feedback.textContent = "Enviando mensaje...";
 
-      form.reset();
+      fetch(form.action, {
+        method: form.method,
+        body: new FormData(form),
+        headers: {
+          Accept: "application/json"
+        }
+      })
+        .then(function (response) {
+          return response.json().then(function (data) {
+            if (!response.ok || String(data.success) !== "true") {
+              throw new Error(data.message || "No se pudo enviar el mensaje.");
+            }
+          });
+        })
+        .then(function () {
+          feedback.className = "form-feedback success";
+          feedback.textContent = "¡Mensaje enviado con éxito! Gracias por contactarme.";
+          form.reset();
+        })
+        .catch(function () {
+          feedback.className = "form-feedback error";
+          feedback.textContent = "No se pudo enviar el mensaje. Inténtalo nuevamente o escríbeme directamente al correo.";
+        })
+        .finally(function () {
+          submitButton.disabled = false;
+        });
     });
   }
 })();

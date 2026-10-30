@@ -312,7 +312,11 @@
         desarrollo e integración de soluciones web.
       </p>
 
-      <form class="contact-form" id="contact-form" novalidate>
+      <form class="contact-form" id="contact-form" action="https://formsubmit.co/ajax/personal@felipevidal.site" method="POST" novalidate>
+        <input type="hidden" name="_subject" value="Nuevo mensaje desde el portafolio" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
         <div class="form-row">
           <div class="form-group">
             <label for="name">Nombre</label>

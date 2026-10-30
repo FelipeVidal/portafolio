@@ -112,7 +112,7 @@ li + li {
 .hero {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 24px 24px 80px;
+  padding: 24px 24px 0px
 }
 
 .navbar {
@@ -355,7 +355,7 @@ h3 {
 .section {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 72px 24px;
+  padding: 10px 24px;
 }
 
 .section-heading {

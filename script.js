@@ -167,7 +167,7 @@
         .catch(function (err) {
           console.error("Error al enviar el formulario:", err);
           feedback.className = "form-feedback error";
-          feedback.textContent = "No se pudo enviar el mensaje (" + (err && err.message ? err.message : "error de red") + "). Inténtalo nuevamente o escríbeme directamente al correo.";
+          feedback.textContent = "No se pudo enviar el mensaje. Inténtalo nuevamente o escríbeme directamente al correo.";
         })
         .finally(function () {
           submitButton.disabled = false;
